@@ -30,7 +30,7 @@ public class TipoLogradouro implements Serializable {
     @Column(name = "DescricaoTipoLogradouro", nullable = false, length = 40)
     private String descricaoTipoLogradouro;
     
-    @OneToMany(mappedBy = "tipologradouro", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "tipologradouro",fetch = FetchType.LAZY)
     @ForeignKey(name = "EnderecoTipoLogradouro")
     private List<Endereco> enderecos;
 

@@ -17,24 +17,34 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
 
+
+
 @Entity
 @Table(name="tipoendereco")
 public class TipoEndereco implements Serializable {
-    
+ 
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue
-    @Column(name = "IdTipoEndereco", nullable = false)
+    @Column(name="IdTipoEndereco", nullable=false)
     private Integer idTipoEndereco;
-    @Column(name = "DescricaoTipoEndereco", nullable = false, length = 35)
+    @Column(name="DescricaoTipoEndereco", nullable=false)
     private String descricaoTipoEndereco;
     
     @OneToMany(mappedBy = "tipoendereco", fetch = FetchType.LAZY)
     @ForeignKey(name="EnderecoTipoEndereco")
-    private List<Endereco> enderecos;
+    List<Endereco> enderecos;
 
     public TipoEndereco() {
+    }
+
+    public Integer getIdTipoEndereco() {
+        return idTipoEndereco;
+    }
+
+    public void setIdTipoEndereco(Integer idTipoEndereco) {
+        this.idTipoEndereco = idTipoEndereco;
     }
 
     public String getDescricaoTipoEndereco() {
@@ -53,12 +63,11 @@ public class TipoEndereco implements Serializable {
         this.enderecos = enderecos;
     }
 
-    public Integer getIdTipoEndereco() {
-        return idTipoEndereco;
-    }
-
-    public void setIdTipoEndereco(Integer idTipoEndereco) {
-        this.idTipoEndereco = idTipoEndereco;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + (this.idTipoEndereco != null ? this.idTipoEndereco.hashCode() : 0);
+        return hash;
     }
 
     @Override
@@ -75,12 +84,8 @@ public class TipoEndereco implements Serializable {
         }
         return true;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + (this.idTipoEndereco != null ? this.idTipoEndereco.hashCode() : 0);
-        return hash;
-    }
+    
+    
+   
     
 }
