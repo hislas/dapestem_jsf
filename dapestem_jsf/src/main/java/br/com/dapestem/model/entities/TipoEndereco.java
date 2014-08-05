@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package br.com.dapestem.model.etities;
+package br.com.dapestem.model.entities;
 
 import java.io.Serializable;
 import java.util.List;
